@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h3>Create a new Account</h3>
+    {% csrf_token %}
+        <form action="" method="post">
+            {% csrf_token %}
+        <p>
+            <label>First Name</label>
+            <input type="text" name="first_name">
+        </p>
+        <p>
+            <label>Last Name</label>
+            <input type="text" name="last_name">
+        </p>
+            <p>
+            <label>Username</label>
+            <input type="text" name="username">
+        </p>
+            <p>
+            <label>Password</label>
+            <input type="password" name="password">
+        </p>
+         <p>
+            <label>Email</label>
+             <input type="email" name="email">
+         </p>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html lang="en">
+<head charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>
+        Learning About You
+    </title>
+    <link href="{% static 'css/nucleo.css' %}" rel="stylesheet">
+    <style type="text/css">
+
+        #wdt{
+            width: 380px;
+            padding: 10px;
+        }
+        #body{
+            background-color: rgb(240, 240, 240);
+        }
+        /*.container{
+          width: 500px;
+          clear: both;
+        }
+        .container input{
+          width: 100%;
+          clear: both;
+        }*/
+        .card{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width:80%;
+            min-height:90px;
+            background:#fff;
+            box-shadow:0 30px 70px rgba(0,0,0,.2);
+            border-radius:50px;
+            transition:0.5s;
+        }
+        .card-text{
+            font-family: sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .jumbotron{
+            margin-left: 4rem;
+            margin-right: 4rem;
+        }
+        option{
+            color: #d6d6f5;
+        }
+        #submit{
+            border-radius:5px;
+            background:#4646d2;
+        }
+
+        #textInput{
+            border: none;
+        }
+
+  .errorlist {
+        margin: 0;
+        padding: 0;
+      }
+      .errorlist li {
+        list-style: none;
+        font-size: 90%;
+        color: red;
+      }
+      .errorlist ~ input,
+      .errorlist ~ select {
+        border-color: red;
+      }
+        .common
+        {
+  text-align: center;
+        }
+    </style>
+    <!-- Theme CSS -->
+    <link type="text/css" href="{% static 'css/argon.min.css' %}" rel="stylesheet">
+    <!-- Core -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Theme JS -->
+    <script src="{% static 'js/argon.min.js' %} "></script>
+</head>
+<body id="body">
+<nav class="navbar navbar-expand-sm justify-content-center">
+    <a id="nav" class="navbar-brand"><h4>Learning About You</h4></a>
+</nav>
+<div class="jumbotron jumbotron-fluid" style="background-color:#d6d6f5;">
+    <div class="container" style="text-align:center">
+        <h1>Prediction Engine</h1>
+        <p style="color:#0a0a29;">Our Prediction Engine will learn about you as you answer the following questions
+            <br>Let's find the best skills for you...</p>
+    </div>
+    <br>
+    <div class = container>
+            <form class="common" action="http://127.0.0.1:8000/form/" method="post" id="userForm" data-skills-url="{% url 'ajax_load_skills' %}" novalidate>
+    {% csrf_token %}
+    <table style="font-size: 20px; padding: 10px;">
+      {{ form.as_table }}
+    </table>
+    <br>
+    <button type="submit" style="font-size: 20px; padding: 10px;">Save</button>
+  </form>
+</div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#userForm").attr("data-skills-url");
+      var categoryId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'category': categoryId
+        },
+        success: function (data) {
+          $("#id_skills").html(data);
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

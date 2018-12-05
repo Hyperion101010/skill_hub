@@ -1,0 +1,4 @@
+<option value="">Select a skill</option>
+{% for skill in skills %}
+<option value="{{ skill.pk }}">{{ skill.name }}</option>
+{% endfor %}

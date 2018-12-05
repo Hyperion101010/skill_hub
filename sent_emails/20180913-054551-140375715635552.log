@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: prashantsa255@gmail.com
+Date: Thu, 13 Sep 2018 05:45:51 -0000
+Message-ID: <153681755102.17417.9155074940037553760@prashant-virtual-machine>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/Mw/4zk-bd146d0ab90152b2f63b/
+
+Your username, in case you've forgotten: prashant
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

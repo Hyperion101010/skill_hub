@@ -1,0 +1,96 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Page</title>
+</head>
+<body>
+<h3>Please fill this form</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        Category: <select name="category">
+    <option value="CEO">CEO</option>
+    <option value="Banker">Banker</option>
+    <option value="Engineer">Engineer</option>
+    <option value="Doctor">Doctor</option>
+  </select>
+        <br>
+        Skills: <input type="text" name="a"><br>
+        Income: <input type="number" name="b"><br>
+        Education qualification: <input type="text" name="c"><br>
+        Desired skills: <input type="text" name="d"><br>
+        Jobs: <input type="text" name="e"><br>
+        <input type="submit" value="Submit">
+</form>
+</body>
+</html>-->
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Skills</title>
+    <style type="text/css">
+      .errorlist {
+        margin: 0;
+        padding: 0;
+      }
+      .errorlist li {
+        list-style: none;
+        font-size: 90%;
+        color: red;
+      }
+      .errorlist ~ input,
+      .errorlist ~ select {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User form</h1>
+    <hr>
+    <h3>Please fill this form</h3>
+
+  <form method="post" id="userForm" data-skills-url="{% url 'ajax_load_skills' %}" novalidate>
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit">Save</button>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#userForm").attr("data-skills-url");
+      var categoryId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'category': categoryId
+        },
+        success: function (data) {
+          $("#id_skills").html(data);
+        }
+      });
+
+    });
+  </script>
+
+  </body>
+</html>
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Page</title>
+</head>
+<body>
+<h3>Please fill this form</h3>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+
+</body>
+</html>-->

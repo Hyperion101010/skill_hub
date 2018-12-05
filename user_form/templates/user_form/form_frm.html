@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>
+        Learning About You
+    </title>
+    <link href="{% static 'css/nucleo.css' %}" rel="stylesheet">
+    <style type="text/css">
+        #wdt{
+            width: 380px;96+
+            padding: 10px;
+        }
+        #body{
+            background-color: rgb(240, 240, 240);
+        }
+        .card{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width:80%;
+            min-height:90px;
+            background:#fff;
+            box-shadow:0 30px 70px rgba(0,0,0,.2);
+            border-radius:50px;
+            transition:0.5s;
+        }
+        .card-text{
+            font-family: sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .jumbotron{
+            margin-left: 4rem;
+            margin-right: 4rem;
+        }
+        option{
+            color: #d6d6f5;
+        }
+        #submit{
+            border-radius:5px;
+            background:#4646d2;
+        }
+
+        #textInput{
+            border: none;
+        }
+
+
+    </style>
+
+    <script>
+        function updateTextInput(val) {
+          document.getElementById('textInput').value="Rs. "+val;
+        }
+    </script>
+    <!-- Theme CSS -->
+    <link type="text/css" href="{% static 'css/argon.min.css' %}" rel="stylesheet">
+    <!-- Core -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Theme JS -->
+    <script src="{% static 'js/argon.min.js' %}"></script>
+</head>
+<body id="body">
+<nav class="navbar navbar-expand-sm justify-content-center">
+    <a id="nav" class="navbar-brand"><h4>Learning About You</h4></a>
+</nav>
+<div class="jumbotron jumbotron-fluid" style="background-color:#d6d6f5;">
+    <div class="container" style="text-align:center">
+        <h1>Prediction Engine Running</h1>
+        <p style="color:#0a0a29;">Our Prediction Engine will learn about you as you answer the following questions
+            <br>Let's find the best skills for you...</p>
+    </div>
+    <br>
+    <form action="" method="POST" id="userForm" data-skills-url="{% url 'ajax_load_skills' %}" novalidate>
+         {% csrf_token %}
+    <div class="card" style="margin-top:80px;">
+        <div class="card-body">
+            <p class="card-text" style="margin-left:1rem">What's your Domain?</p>
+            <div class="row-mb">
+                <select id="id_category" class="form-control form-control-lg btn btn-block text-left" name="category" required>
+                    <option value="" disabled selected>Select your domain</option>
+                    {% for cat in category %}
+                    <option value="{{ cat.pk }}">{{ cat.name }}</option>
+                    {% endfor %}
+
+                    <!--<option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
+                    <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
+                    <option value="District Committee">District Committee</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Other Category">Other Category</option>
+                    <option value="Professional Conference">Professional Conference</option>
+                    <option value="Professional Workshop / Training">Professional Workshop / Training</option>
+                    <option value="Pupil Services">Pupil Services</option>-->
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="margin-top:20px;">
+        <div class="card-body">
+            <p class="card-text" style="margin-left:1rem">What Skills have you acquired?</p>
+            <div class="row-mb">
+                <select id="id_skills" class="form-control form-control-lg btn btn-block text-left" name="skills" required>
+                    <option value="" disabled selected>Select a Skill</option>
+                    {% for skill in skills %}
+                    <option value="{{ cat.pk }}">{{ skill.name }}</option>
+                    {% endfor %}
+
+                    <!--<option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
+                    <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
+                    <option value="District Committee">District Committee</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Other Category">Other Category</option>
+                    <option value="Professional Conference">Professional Conference</option>
+                    <option value="Professional Workshop / Training">Professional Workshop / Training</option>
+                    <option value="Pupil Services">Pupil Services</option>-->
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="margin-top:20px;">
+        <div class="card-body">
+            <p class="card-text" style="margin-left:1rem">What's your Educational background?</p>
+            <div class="row-mb">
+                <select class="form-control form-control-lg btn btn-block text-left" name="edu_qualification" required>
+                    <option value="" disabled selected>Select a level of Education</option>
+                    <option value="Classroom Instruction and Assessment">Classroom Instruction and Assessment</option>
+                    <option value="Curriculum Development and Alignment">Curriculum Development and Alignment</option>
+                    <option value="District Committee">District Committee</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Other Category">Other Category</option>
+                    <option value="Professional Conference">Professional Conference</option>
+                    <option value="Professional Workshop / Training">Professional Workshop / Training</option>
+                    <option value="Pupil Services">Pupil Services</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="margin-top:20px;">
+        <div class="card-body">
+            <p class="card-text" style="margin-left:1rem">Please enter your Income</p>
+            <div class="row-mb">
+                <div class="form-control form-control-lg bt">
+                    <input type="range" id="myRange" class="form-control-range" min="0" max="100000" value="10000" onchange="updateTextInput(value)">
+                    <div align="center">
+                        <input class="text-center" name="income" type="text" id="textInput" value="Rs. 10000">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div align="center">
+        <a href="#">
+            <input type="submit" id="submit" class="btn btn-primary" value="Submit">
+        </a>
+    </div>
+    </form>
+</div>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#userForm").attr("data-skills-url");
+      var categoryId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'category': categoryId
+        },
+        success: function (data) {
+          $("#id_skills").html(data);
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
