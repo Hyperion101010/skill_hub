@@ -1,5 +1,8 @@
 # skill_hub
-    Minspark 2018 :Skill Development website.  A website that can act as a central-hub for social economic backward people         providing employment driven skills .It can equip poor/unskilled people with required skills so that they can increase thier     skillset and get good job .
+    Minspark 2018 :Skill Development website.  A website that can act as a central-hub for social economic backward people
+    
+    providing employment driven skills .It can equip poor/unskilled people with required skills so that they can increase thier     
+    skillset and get good job .
 
 This websie is developed in Django, Nucleo CSS, Requests and uses Beautiful Soup.
 
