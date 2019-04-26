@@ -23,7 +23,7 @@ def parser_text(s):
     return lo
 
 def get_element(data,index):
-    data_dummy=data.iloc[,5:6]
+    data_dummy=data.iloc[:,5:6]
     return data_dummy.values
 
 def prediction_engine(skills,file_name):

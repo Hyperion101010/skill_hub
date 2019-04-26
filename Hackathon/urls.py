@@ -10,6 +10,9 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('form/', include('user_form.urls')),
     path('predict/predict',include('user_form.urls')),
+    path('balance/', TemplateView.as_view(
+        template_name='user_form/balance_sheet_management.html'), name='balance'),
+     path('auditing/',TemplateView.as_view(template_name='user_form/auditing.html'), name='auditing')
 ]
 
 
