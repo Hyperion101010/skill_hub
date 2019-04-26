@@ -16,4 +16,6 @@ If you have any problem drop a message, or follow the official documentation for
 
 3>When you see that the server has compiled the application correctly, open "https://127.0.0.1:8080" to use the application.
 
+![Screenshot](/images/1.png)
+
 If you have any problem open a PR, let me know!
