@@ -23,7 +23,7 @@ Signup page:
 ![Screenshot](/images/3.png)
 
 Prediction engine:
-![Screenshot](/images/4.png)
+![Screenshot](/images/5.png)
 
 Skill building dashboard:
 ![Screenshot](/images/7.png)
