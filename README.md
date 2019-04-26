@@ -26,6 +26,8 @@ Prediction engine:
 ![Screenshot](/images/4.png)
 
 Skill building dashboard:
-![Screenshot](/images/6.png)
+![Screenshot](/images/5.png)
+
+![Screenshot](/images/9.png)
 
 If you have any problem open a PR, let me know!
